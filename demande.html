@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Demander le livre blanc — Olivier Couly</title>
+  <meta name="description" content="Options universelles pour demander le livre blanc par email." />
+  <style>
+    :root{--bg:#fafafa;--card:#fff;--text:#111;--muted:#555;--border:#e6e6e6;}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--text);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;}
+    .wrap{max-width:760px;margin:0 auto;padding:56px 20px;}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:26px;}
+    h1{font-size:26px;line-height:1.25;margin:0 0 10px;}
+    p{margin:0 0 14px;line-height:1.65;}
+    .muted{color:var(--muted);font-size:14px;}
+    .box{border:1px solid var(--border);border-radius:10px;padding:14px;background:#fff;}
+    code{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+    a.btn{display:inline-block;text-decoration:none;border-radius:10px;padding:12px 14px;border:1px solid #111;background:#111;color:#fff;font-weight:650;}
+    a.btn2{display:inline-block;text-decoration:none;border-radius:10px;padding:12px 14px;border:1px solid var(--border);background:#fff;color:#111;font-weight:650;}
+    a.link{color:#111;text-decoration:underline;}
+    textarea{width:100%;min-height:120px;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:14px;line-height:1.5;resize:vertical;}
+    .hr{height:1px;background:var(--border);margin:18px 0;}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <h1>Demander le livre blanc (PDF)</h1>
+
+      <p>
+        Pour garantir une compatibilité maximale (tous systèmes) et préserver une diffusion raisonnée,
+        le livre blanc est transmis par email sur simple demande.
+      </p>
+
+      <div class="box">
+        <p class="muted" style="margin-bottom:8px;">Adresse de contact</p>
+        <p style="margin:0;">
+          <code id="email">olivier.couly@gmail.com</code>
+          &nbsp;—&nbsp;
+          <a class="link" href="#" id="copyEmail">Copier l’adresse</a>
+        </p>
+      </div>
+
+      <div class="hr"></div>
+
+      <p class="muted" style="margin-bottom:8px;">Message suggéré (copier/coller)</p>
+      <textarea id="msg" readonly>Bonjour,
+
+Je souhaite recevoir le livre blanc « Construire la légitimité des pratiques complémentaires » (version PDF).
+
+Cordialement,</textarea>
+
+      <div class="row">
+        <!-- Gmail (très fiable si l’utilisateur a Gmail) -->
+        <a class="btn"
+           target="_blank" rel="noopener"
+           href="https://mail.google.com/mail/?view=cm&fs=1&to=olivier.couly@gmail.com&su=Demande%20du%20livre%20blanc%20%E2%80%93%20L%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires&body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20le%20livre%20blanc%20%C2%AB%20Construire%20la%20l%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires%20%C2%BB%20(version%20PDF).%0A%0ACordialement%2C%0A">
+          Ouvrir Gmail
+        </a>
+
+        <!-- Outlook Web (Office 365 / live.com) -->
+        <a class="btn2"
+           target="_blank" rel="noopener"
+           href="https://outlook.office.com/mail/deeplink/compose?to=olivier.couly@gmail.com&subject=Demande%20du%20livre%20blanc%20%E2%80%93%20L%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires&body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20le%20livre%20blanc%20%C2%AB%20Construire%20la%20l%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires%20%C2%BB%20(version%20PDF).%0A%0ACordialement%2C%0A">
+          Ouvrir Outlook Web
+        </a>
+
+        <!-- Client mail local (si configuré) -->
+        <a class="btn2"
+           href="mailto:olivier.couly@gmail.com?subject=Demande%20du%20livre%20blanc%20%E2%80%93%20L%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires&body=Bonjour%2C%0A%0AJe%20souhaite%20recevoir%20le%20livre%20blanc%20%C2%AB%20Construire%20la%20l%C3%A9gitimit%C3%A9%20des%20pratiques%20compl%C3%A9mentaires%20%C2%BB%20(version%20PDF).%0A%0ACordialement%2C%0A">
+          Ouvrir ma messagerie
+        </a>
+      </div>
+
+      <p class="muted" style="margin-top:14px;">
+        Si aucun bouton ne fonctionne (cas rare), copiez simplement l’adresse et le message ci-dessus.
+      </p>
+
+      <div class="hr"></div>
+
+      <p class="muted" style="margin:0;">
+        <a class="link" href="index.html">Retour à la page principale</a>
+      </p>
+    </section>
+  </main>
+
+  <script>
+    // Copie email
+    document.getElementById('copyEmail').addEventListener('click', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('email').textContent.trim();
+      try {
+        await navigator.clipboard.writeText(email);
+        e.target.textContent = "Copié";
+        setTimeout(()=> e.target.textContent = "Copier l’adresse", 1200);
+      } catch {
+        // Fallback silencieux
+        alert("Copiez manuellement : " + email);
+      }
+    });
+  </script>
+</body>
+</html>
